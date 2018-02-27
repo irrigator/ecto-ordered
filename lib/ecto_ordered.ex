@@ -97,7 +97,7 @@ defmodule EctoOrdered do
       {{:ok, _}, _} ->
         options |> update_rank(cs) |> ensure_unique_position(options)
 
-      foo ->
+      _ ->
         cs
     end
   end
@@ -258,7 +258,7 @@ defmodule EctoOrdered do
     round((@max - @min) / count) * new_index + @min
   end
 
-  defp current_order(%Options{rank_field: rank_field} = options, cs) do
+  defp current_order(%Options{rank_field: _} = options, cs) do
     options
     |> rank_query
     |> scope_query(options, cs)
